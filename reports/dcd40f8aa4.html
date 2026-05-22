@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🏢 公司深度 | Hesai HSAI - 研报深度解读</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f5f6f8;--card:#fff;--text:#1a1a2e;--text2:#666;--accent:#1d4ed8;
+  --green:#16a34a;--yellow:#d97706;--red:#dc2626;--border:#e5e7eb;--tag-bg:#eff6ff;
+  --header-grad:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#2563eb 100%)}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Noto Sans SC","PingFang SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased}
+.container{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+
+/* ===== HEADER ===== */
+.report-header{background:var(--header-grad);color:#fff;border-radius:14px;
+  padding:32px 28px 24px;margin-bottom:24px;position:relative;overflow:hidden}
+.report-header::after{content:'';position:absolute;top:-40%;right:-10%;width:260px;height:260px;
+  background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);pointer-events:none}
+.report-header h1{font-size:1.35em;font-weight:700;line-height:1.5;margin-bottom:16px;position:relative}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:4px 20px;font-size:.84em;opacity:.9;position:relative}
+.meta-item{display:flex;gap:6px;padding:2px 0}
+.meta-label{opacity:.65;white-space:nowrap;min-width:48px}
+
+/* ===== CONCLUSION BOX ===== */
+.conclusion-box{background:var(--card);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:20px 22px;margin-bottom:24px;font-size:.94em;line-height:1.85;
+  box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.conclusion-box .tag{display:inline-block;background:var(--tag-bg);color:var(--accent);
+  font-size:.72em;font-weight:600;padding:2px 10px;border-radius:4px;margin-bottom:10px;
+  letter-spacing:.3px}
+
+/* ===== TOC ===== */
+.toc{background:var(--card);border-radius:10px;padding:14px 20px;margin-bottom:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border)}
+.toc-title{font-size:.72em;font-weight:700;color:var(--text2);text-transform:uppercase;
+  letter-spacing:.8px;margin-bottom:10px}
+.toc-list{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none}
+.toc-list a{font-size:.82em;color:var(--accent);text-decoration:none;padding:2px 0;
+  display:inline-flex;align-items:center;gap:4px}
+.toc-list a:hover{text-decoration:underline}
+
+/* ===== SECTIONS ===== */
+.section{background:var(--card);border-radius:10px;padding:24px 26px;margin-bottom:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border);
+  transition:box-shadow .15s}
+.section:hover{box-shadow:0 3px 12px rgba(0,0,0,.07)}
+.section-title{font-size:1.08em;font-weight:700;margin-bottom:16px;padding-bottom:10px;
+  border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;color:#0f172a}
+.section-title .icon{font-size:1.15em}
+
+/* ===== TABLES ===== */
+.section table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86em;
+  border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.section th{background:#f8fafc;font-weight:600;text-align:left;padding:8px 12px;
+  border-bottom:2px solid var(--border);font-size:.92em;white-space:nowrap}
+.section td{padding:7px 12px;border-bottom:1px solid #f1f5f9;vertical-align:top;line-height:1.6}
+.section tr:last-child td{border-bottom:none}
+.section tr:hover td{background:#fafbfc}
+
+/* ===== TYPOGRAPHY ===== */
+.section h3{font-size:.98em;font-weight:700;margin:18px 0 8px;color:#1e3a5f}
+.section h4{font-size:.92em;font-weight:600;margin:14px 0 6px;color:#334155}
+.section p{margin:8px 0}
+.section strong{color:#1e3a5f;font-weight:600}
+.section ul,.section ol{margin:6px 0 6px 20px}
+.section li{margin:3px 0;line-height:1.7}
+.section blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:12px 0;
+  background:#f8faff;border-radius:0 6px 6px 0;color:var(--text2);font-size:.92em}
+.section code{background:#f1f5f9;padding:1px 6px;border-radius:3px;font-size:.86em;color:#be123c}
+.section hr{border:none;border-top:1px solid var(--border);margin:18px 0}
+
+/* ===== TRAP DETECTION ===== */
+.trap-safe{color:var(--green);font-weight:700}
+.trap-warn{color:var(--yellow);font-weight:700}
+.trap-danger{color:var(--red);font-weight:700}
+.trap-box{border-radius:8px;padding:12px 16px;margin:10px 0;font-size:.9em}
+.trap-box.safe{background:#f0fdf4;border:1px solid #bbf7d0}
+.trap-box.warn{background:#fffbeb;border:1px solid #fde68a}
+.trap-box.danger{background:#fef2f2;border:1px solid #fecaca}
+
+/* ===== CHECKLIST ===== */
+.section li{position:relative}
+.check-item{opacity:.85}
+
+/* ===== FOOTER ===== */
+.footer{text-align:center;color:#aaa;font-size:.76em;margin-top:32px;padding:20px 0;
+  border-top:1px solid var(--border)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .container{padding:12px 8px}
+  .report-header{padding:22px 18px;border-radius:10px}
+  .report-header h1{font-size:1.1em}
+  .meta-grid{grid-template-columns:1fr}
+  .section{padding:16px 14px;border-radius:8px}
+  .section table{font-size:.8em}
+  .section th,.section td{padding:5px 8px}
+  .toc-list{gap:4px 10px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="report-header">
+<h1>🏢 公司深度 | Hesai HSAI</h1>
+
+</div>
+
+<div class="toc"><div class="toc-title">目录导航</div><div class="toc-list"><a href="#sec-0">覆盖概览</a><a href="#sec-1">共识与分歧</a><a href="#sec-2">估值参考</a><a href="#sec-3">关键催化剂</a><a href="#sec-4">风险提示</a><a href="#sec-5">A股/港股映射（如适用）</a></div></div>
+<div class="section" id="sec-0">
+<div class="section-title">覆盖概览</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: center;">评级</th>
+<th style="text-align: center;">目标价</th>
+<th style="text-align: left;">核心逻辑</th>
+<th style="text-align: left;">日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Bernstein</td>
+<td style="text-align: center;">跑赢大盘</td>
+<td style="text-align: center;">$30.00</td>
+<td style="text-align: left;">与奔驰达成合作，物理AI驱动长期上行</td>
+<td style="text-align: left;">2026-05-20</td>
+</tr>
+<tr>
+<td style="text-align: left;">Morgan Stanley</td>
+<td style="text-align: center;">增持</td>
+<td style="text-align: center;">未提供</td>
+<td style="text-align: left;">交付目标稳固，第二曲线SGI支撑长期逻辑</td>
+<td style="text-align: left;">2026-05-19</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sec-1">
+<div class="section-title">共识与分歧</div>
+<p><strong>共识</strong>: 券商一致认为公司当前基本面稳健，核心激光雷达业务在出货量和市占率上保持强劲增长动能，且具备广阔的长期增长前景。<br />
+<strong>分歧</strong>: 两家机构对公司长期驱动力的侧重略有不同。Bernstein更强调“物理人工智能（Physical AI）”作为长期新业务的价值尚未被市场充分计入；而Morgan Stanley则将重点放在“战略增长计划（SGI）”的具体营收目标（2030年追平核心业务）上。此外，Bernstein基于宏观或估值考量小幅下调了目标价，而大摩更强调当前股价存在超卖带来的反弹机会。</p>
+</div>
+<div class="section" id="sec-2">
+<div class="section-title">估值参考</div>
+<p>研报未提供具体估值数据（如PE/PS等）。但提供了明确的业绩与财务预测参考：<br />
+- <strong>营收与利润预测</strong>：预计2026年第二季度营收将达到8.5亿至9.0亿元人民币（环比持续改善），并预计实现约1亿元人民币的净利润。<br />
+- <strong>出货量预测</strong>：2026年全年交付量目标稳固，预计维持在300万至350万台之间。<br />
+- <strong>SGI业务营收预期</strong>：2026年目标1亿元，2027年跃升至5亿元，预计到2030年其业务规模有望追平核心激光雷达业务。</p>
+</div>
+<div class="section" id="sec-3">
+<div class="section-title">关键催化剂</div>
+<ol>
+<li><strong>与奔驰达成战略合作</strong> — 标志着公司全球化扩张的里程碑，有望进一步打开海外车企定点市场。</li>
+<li><strong>ADAS与机器人业务放量</strong> — 两大核心业务出货量同比大增（分别约142%和138%），且稳居中国51%的市占率，直接驱动当期业绩。</li>
+<li><strong>“物理人工智能”及SGI落地</strong> — 第二增长曲线的战略性新业务不仅带来远期百亿级营收空间，还能提升市场对公司长期价值的重估预期。</li>
+</ol>
+</div>
+<div class="section" id="sec-4">
+<div class="section-title">风险提示</div>
+<ul>
+<li><strong>宏观市场波动风险</strong>：近期股价受大盘拖累易出现超预期的超卖反应，短期存在资金面扰动风险。</li>
+<li><strong>新业务商业化不确定性</strong>：“物理AI”或SGI战略产品的必要性和价值尚未被投资者完全认知，若落地不及预期可能面临估值回调。</li>
+<li><strong>目标价下调风险</strong>：部分机构已小幅下调基于DCF法的目标价（由32美元降至30美元），需关注盈利预测的边际变化。</li>
+</ul>
+</div>
+<div class="section" id="sec-5">
+<div class="section-title">A股/港股映射（如适用）</div>
+<ul>
+<li><strong>激光雷达及光学组件供应链</strong>：永新光学（603297.SH）、舜宇光学科技（2382.HK）、宇瞳光学（300790.SZ）。</li>
+<li><strong>自动驾驶及机器人概念对标</strong>：速腾聚创（2498.HK，同属激光雷达核心标的）、比亚迪电子（285.HK，涉足智能驾驶及代工）、德赛西威（002920.SZ，智驾硬件龙头）。</li>
+</ul>
+<hr />
+<blockquote>
+<p>📌 数据来源: Bernstein, Morgan Stanley</p>
+<p>⚠️ 以上为AI聚合分析，仅供参考，不构成投资建议</p>
+</blockquote>
+</div>
+
+<div class="footer">本报告由 zsxq-analyzer 自动生成 · 仅供参考 · 不构成投资建议</div>
+</div>
+</body>
+</html>
