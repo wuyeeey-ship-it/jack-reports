@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🎯 主题投资 | 中国消费复苏 - 研报深度解读</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f5f6f8;--card:#fff;--text:#1a1a2e;--text2:#666;--accent:#1d4ed8;
+  --green:#16a34a;--yellow:#d97706;--red:#dc2626;--border:#e5e7eb;--tag-bg:#eff6ff;
+  --header-grad:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#2563eb 100%)}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Noto Sans SC","PingFang SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased}
+.container{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+
+/* ===== HEADER ===== */
+.report-header{background:var(--header-grad);color:#fff;border-radius:14px;
+  padding:32px 28px 24px;margin-bottom:24px;position:relative;overflow:hidden}
+.report-header::after{content:'';position:absolute;top:-40%;right:-10%;width:260px;height:260px;
+  background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);pointer-events:none}
+.report-header h1{font-size:1.35em;font-weight:700;line-height:1.5;margin-bottom:16px;position:relative}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:4px 20px;font-size:.84em;opacity:.9;position:relative}
+.meta-item{display:flex;gap:6px;padding:2px 0}
+.meta-label{opacity:.65;white-space:nowrap;min-width:48px}
+
+/* ===== CONCLUSION BOX ===== */
+.conclusion-box{background:var(--card);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:20px 22px;margin-bottom:24px;font-size:.94em;line-height:1.85;
+  box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.conclusion-box .tag{display:inline-block;background:var(--tag-bg);color:var(--accent);
+  font-size:.72em;font-weight:600;padding:2px 10px;border-radius:4px;margin-bottom:10px;
+  letter-spacing:.3px}
+
+/* ===== TOC ===== */
+.toc{background:var(--card);border-radius:10px;padding:14px 20px;margin-bottom:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border)}
+.toc-title{font-size:.72em;font-weight:700;color:var(--text2);text-transform:uppercase;
+  letter-spacing:.8px;margin-bottom:10px}
+.toc-list{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none}
+.toc-list a{font-size:.82em;color:var(--accent);text-decoration:none;padding:2px 0;
+  display:inline-flex;align-items:center;gap:4px}
+.toc-list a:hover{text-decoration:underline}
+
+/* ===== SECTIONS ===== */
+.section{background:var(--card);border-radius:10px;padding:24px 26px;margin-bottom:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border);
+  transition:box-shadow .15s}
+.section:hover{box-shadow:0 3px 12px rgba(0,0,0,.07)}
+.section-title{font-size:1.08em;font-weight:700;margin-bottom:16px;padding-bottom:10px;
+  border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;color:#0f172a}
+.section-title .icon{font-size:1.15em}
+
+/* ===== TABLES ===== */
+.section table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86em;
+  border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.section th{background:#f8fafc;font-weight:600;text-align:left;padding:8px 12px;
+  border-bottom:2px solid var(--border);font-size:.92em;white-space:nowrap}
+.section td{padding:7px 12px;border-bottom:1px solid #f1f5f9;vertical-align:top;line-height:1.6}
+.section tr:last-child td{border-bottom:none}
+.section tr:hover td{background:#fafbfc}
+
+/* ===== TYPOGRAPHY ===== */
+.section h3{font-size:.98em;font-weight:700;margin:18px 0 8px;color:#1e3a5f}
+.section h4{font-size:.92em;font-weight:600;margin:14px 0 6px;color:#334155}
+.section p{margin:8px 0}
+.section strong{color:#1e3a5f;font-weight:600}
+.section ul,.section ol{margin:6px 0 6px 20px}
+.section li{margin:3px 0;line-height:1.7}
+.section blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:12px 0;
+  background:#f8faff;border-radius:0 6px 6px 0;color:var(--text2);font-size:.92em}
+.section code{background:#f1f5f9;padding:1px 6px;border-radius:3px;font-size:.86em;color:#be123c}
+.section hr{border:none;border-top:1px solid var(--border);margin:18px 0}
+
+/* ===== TRAP DETECTION ===== */
+.trap-safe{color:var(--green);font-weight:700}
+.trap-warn{color:var(--yellow);font-weight:700}
+.trap-danger{color:var(--red);font-weight:700}
+.trap-box{border-radius:8px;padding:12px 16px;margin:10px 0;font-size:.9em}
+.trap-box.safe{background:#f0fdf4;border:1px solid #bbf7d0}
+.trap-box.warn{background:#fffbeb;border:1px solid #fde68a}
+.trap-box.danger{background:#fef2f2;border:1px solid #fecaca}
+
+/* ===== CHECKLIST ===== */
+.section li{position:relative}
+.check-item{opacity:.85}
+
+/* ===== FOOTER ===== */
+.footer{text-align:center;color:#aaa;font-size:.76em;margin-top:32px;padding:20px 0;
+  border-top:1px solid var(--border)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .container{padding:12px 8px}
+  .report-header{padding:22px 18px;border-radius:10px}
+  .report-header h1{font-size:1.1em}
+  .meta-grid{grid-template-columns:1fr}
+  .section{padding:16px 14px;border-radius:8px}
+  .section table{font-size:.8em}
+  .section th,.section td{padding:5px 8px}
+  .toc-list{gap:4px 10px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="report-header">
+<h1>🎯 主题投资 | 中国消费复苏</h1>
+
+</div>
+
+<div class="toc"><div class="toc-title">目录导航</div><div class="toc-list"><a href="#sec-0">主题概述</a><a href="#sec-1">核心问题</a><a href="#sec-2">产业链地图</a><a href="#sec-3">投资标的</a><a href="#sec-4">关键验证指标</a><a href="#sec-5">风险提示</a></div></div>
+<div class="section" id="sec-0">
+<div class="section-title">主题概述</div>
+<blockquote>
+<p>中国消费市场正处于结构性复苏与弱复苏并存的震荡期。4月经济数据显示工业生产与必需消费品展现韧性，但整体零售销售受汽车、家电拖累增速放缓。消费复苏表现出显著的K型分化：一方面，体育服饰等前期高景气赛道出现GMV回调，消费者情绪实质性改善有限；另一方面，依托于量贩零食渠道下沉、即时零售爆发以及AI云商业化提速的结构性增长动能正在凸显。</p>
+</blockquote>
+</div>
+<div class="section" id="sec-1">
+<div class="section-title">核心问题</div>
+<p><strong>在消费者情绪趋于谨慎、储蓄率处于低位的宏观背景下，哪些细分消费赛道能够依靠供给侧创新或渠道红利穿越弱复苏周期？</strong></p>
+<h3>看多方 (7/8)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: left;">核心论据</th>
+<th style="text-align: left;">关键数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Morgan Stanley</td>
+<td style="text-align: left;">白酒龙头在淡季进行小幅提价，旨在为旺季构建健康定价体系，且核心单品价格保持稳定。</td>
+<td style="text-align: left;">非飞天产品提价2%-8%，占直销和批发总销售额仅中低个位数百分比。</td>
+</tr>
+<tr>
+<td style="text-align: left;">阿里巴巴</td>
+<td style="text-align: left;">AI商业化迎拐点进入回报周期；核心电商业务恢复增长，即时零售规模扩大且UE显著优化。</td>
+<td style="text-align: left;">云外部收入加速增长40%；电商CMR恢复至8%增速；即时零售达200亿(+57%)。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Goldman Sachs</td>
+<td style="text-align: left;">必需消费品销量具韧性，乳业供需走向再平衡，零食量贩单店效益稳健，软饮料及啤酒长期复苏可期。</td>
+<td style="text-align: left;">蒙牛4月液态奶维持LSD~MSD%正增长；万辰3-4月单店GMV维持SD%正增长。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Goldman Sachs (Asia) L.L.C.</td>
+<td style="text-align: left;">4月工业生产受强于预期的出口和汽车产量增长改善推动，呈现反弹态势，且零售销售微升。</td>
+<td style="text-align: left;">预计4月工业增加值同比增长反弹至6.2%；预计4月零售销售同比增速微升至2.0%。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bernstein</td>
+<td style="text-align: left;">运动服饰市场中，部分头部品牌凭借多品牌矩阵或强劲的复苏动能，持续收复失地或扩大份额。</td>
+<td style="text-align: left;">安踏4月GMV增长18%，YTD份额增加147bps；阿迪达斯GMV以26%的增长持续收复份额。</td>
+</tr>
+</tbody>
+</table>
+<h3>质疑方 (1/8)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: left;">核心担忧</th>
+<th style="text-align: left;">关键数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Citigroup</td>
+<td style="text-align: left;">宏观层面高油价和通胀压制消费者购买力，导致个人储蓄率降至历史低位，消费行为趋于谨慎。</td>
+<td style="text-align: left;">3月个人储蓄率降至3.6%，为2022年以来最低水平。</td>
+</tr>
+</tbody>
+</table>
+<p><em>(注：Bernstein虽然看好安踏与阿迪达斯，但对整体中国运动服饰市场持中性看法，指出4月线上GMV同比下降9%。)</em></p>
+</div>
+<div class="section" id="sec-2">
+<div class="section-title">产业链地图</div>
+<p>上游: [原材料及农牧养殖(万洲国际/蒙牛/伊利)] → 中游: [食品饮料及品牌服饰制造(贵州茅台/海天味夫/农夫山泉/安踏/阿迪达斯)] → 下游: [渠道零售与云端基建(鸣鸣很忙/万辰/阿里巴巴即时零售/阿里云)]</p>
+</div>
+<div class="section" id="sec-3">
+<div class="section-title">投资标的</div>
+<h3>确定性排序</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">优先级</th>
+<th style="text-align: left;">标的</th>
+<th style="text-align: left;">代码</th>
+<th style="text-align: left;">受益环节</th>
+<th style="text-align: center;">确定性</th>
+<th style="text-align: center;">弹性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">阿里巴巴</td>
+<td style="text-align: left;">9988.HK / BABA</td>
+<td style="text-align: left;">AI云商业化拐点、即时零售爆发</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">高</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">贵州茅台</td>
+<td style="text-align: left;">600519.SH</td>
+<td style="text-align: left;">品牌护城河、淡季提价权</td>
+<td style="text-align: center;">极高</td>
+<td style="text-align: center;">低</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">安踏体育</td>
+<td style="text-align: left;">2020.HK</td>
+<td style="text-align: left;">多品牌矩阵驱动(如Fila/Descente)</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">中</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">万辰集团</td>
+<td style="text-align: left;">300972.SZ</td>
+<td style="text-align: left;">零食量贩渠道下沉红利</td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">高</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">蒙牛乳业</td>
+<td style="text-align: left;">2319.HK</td>
+<td style="text-align: left;">乳制品供需格局再平衡</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">低</td>
+</tr>
+</tbody>
+</table>
+<h3>A股映射</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">标的</th>
+<th style="text-align: left;">代码</th>
+<th style="text-align: left;">受益逻辑</th>
+<th style="text-align: left;">阶段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">贵州茅台</td>
+<td style="text-align: left;">600519.SH</td>
+<td style="text-align: left;">非飞天提价夯实盈利底线，飞天批价稳健为三季度旺季蓄力。</td>
+<td style="text-align: left;">防御待涨</td>
+</tr>
+<tr>
+<td style="text-align: left;">万辰集团</td>
+<td style="text-align: left;">300972.SZ</td>
+<td style="text-align: left;">量贩零食赛道持续扩张，单店GMV保持正增长，享受渠道变革红利。</td>
+<td style="text-align: left;">高成长</td>
+</tr>
+<tr>
+<td style="text-align: left;">农夫山泉</td>
+<td style="text-align: left;">605099.SH</td>
+<td style="text-align: left;">具备强大品牌力，待外卖补贴竞争高点过后，有望迎来长期份额提升。</td>
+<td style="text-align: left;">左侧布局</td>
+</tr>
+<tr>
+<td style="text-align: left;">海天味业</td>
+<td style="text-align: left;">603288.SH</td>
+<td style="text-align: left;">调味品需求具备韧性，低基数下长期复苏潜力较大。</td>
+<td style="text-align: left;">修复初期</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sec-4">
+<div class="section-title">关键验证指标</div>
+<ol>
+<li>飞天茅台中秋旺季前的批发价格走势及渠道回款进度 — 2026年三季度验证</li>
+<li>中国4月社零数据实际增速及汽车、家电等大件消费的回暖情况 — 2026年5月中旬验证</li>
+<li>即时零售与云业务在巨头高强度投入后的UE（单位经济效益）改善情况 — 2026年Q2财报季验证</li>
+</ol>
+</div>
+<div class="section" id="sec-5">
+<div class="section-title">风险提示</div>
+<ul>
+<li>宏观储蓄率下行风险：高油价与通胀持续侵蚀居民可支配收入，导致储蓄率进一步下降，压制整体消费情绪。</li>
+<li>成本上行风险：PET包装及物流成本自5-6月起可能转为阻力，压制必需消费品企业的利润率。</li>
+<li>行业竞争加剧风险：外卖补贴战导致短期利润受损，部分赛道（如运动服饰、宠物食品）面临去库存或价格战压力。</li>
+</ul>
+<hr />
+<blockquote>
+<p>📌 本专题聚合 8 份研报 (Goldman Sachs (Asia) L.L.C., Citigroup, Morgan Stanley, Goldman Sachs, Bernstein, 未知)</p>
+<p>⚠️ 以上为AI聚合分析，仅供参考，不构成投资建议</p>
+</blockquote>
+</div>
+
+<div class="footer">本报告由 zsxq-analyzer 自动生成 · 仅供参考 · 不构成投资建议</div>
+</div>
+</body>
+</html>
