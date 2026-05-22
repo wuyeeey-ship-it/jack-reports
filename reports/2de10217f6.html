@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🔍 券商观点追踪 | 第21周 - 研报深度解读</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f5f6f8;--card:#fff;--text:#1a1a2e;--text2:#666;--accent:#1d4ed8;
+  --green:#16a34a;--yellow:#d97706;--red:#dc2626;--border:#e5e7eb;--tag-bg:#eff6ff;
+  --header-grad:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#2563eb 100%)}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Noto Sans SC","PingFang SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased}
+.container{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+
+/* ===== HEADER ===== */
+.report-header{background:var(--header-grad);color:#fff;border-radius:14px;
+  padding:32px 28px 24px;margin-bottom:24px;position:relative;overflow:hidden}
+.report-header::after{content:'';position:absolute;top:-40%;right:-10%;width:260px;height:260px;
+  background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);pointer-events:none}
+.report-header h1{font-size:1.35em;font-weight:700;line-height:1.5;margin-bottom:16px;position:relative}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:4px 20px;font-size:.84em;opacity:.9;position:relative}
+.meta-item{display:flex;gap:6px;padding:2px 0}
+.meta-label{opacity:.65;white-space:nowrap;min-width:48px}
+
+/* ===== CONCLUSION BOX ===== */
+.conclusion-box{background:var(--card);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:20px 22px;margin-bottom:24px;font-size:.94em;line-height:1.85;
+  box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.conclusion-box .tag{display:inline-block;background:var(--tag-bg);color:var(--accent);
+  font-size:.72em;font-weight:600;padding:2px 10px;border-radius:4px;margin-bottom:10px;
+  letter-spacing:.3px}
+
+/* ===== TOC ===== */
+.toc{background:var(--card);border-radius:10px;padding:14px 20px;margin-bottom:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border)}
+.toc-title{font-size:.72em;font-weight:700;color:var(--text2);text-transform:uppercase;
+  letter-spacing:.8px;margin-bottom:10px}
+.toc-list{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none}
+.toc-list a{font-size:.82em;color:var(--accent);text-decoration:none;padding:2px 0;
+  display:inline-flex;align-items:center;gap:4px}
+.toc-list a:hover{text-decoration:underline}
+
+/* ===== SECTIONS ===== */
+.section{background:var(--card);border-radius:10px;padding:24px 26px;margin-bottom:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border);
+  transition:box-shadow .15s}
+.section:hover{box-shadow:0 3px 12px rgba(0,0,0,.07)}
+.section-title{font-size:1.08em;font-weight:700;margin-bottom:16px;padding-bottom:10px;
+  border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;color:#0f172a}
+.section-title .icon{font-size:1.15em}
+
+/* ===== TABLES ===== */
+.section table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86em;
+  border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.section th{background:#f8fafc;font-weight:600;text-align:left;padding:8px 12px;
+  border-bottom:2px solid var(--border);font-size:.92em;white-space:nowrap}
+.section td{padding:7px 12px;border-bottom:1px solid #f1f5f9;vertical-align:top;line-height:1.6}
+.section tr:last-child td{border-bottom:none}
+.section tr:hover td{background:#fafbfc}
+
+/* ===== TYPOGRAPHY ===== */
+.section h3{font-size:.98em;font-weight:700;margin:18px 0 8px;color:#1e3a5f}
+.section h4{font-size:.92em;font-weight:600;margin:14px 0 6px;color:#334155}
+.section p{margin:8px 0}
+.section strong{color:#1e3a5f;font-weight:600}
+.section ul,.section ol{margin:6px 0 6px 20px}
+.section li{margin:3px 0;line-height:1.7}
+.section blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:12px 0;
+  background:#f8faff;border-radius:0 6px 6px 0;color:var(--text2);font-size:.92em}
+.section code{background:#f1f5f9;padding:1px 6px;border-radius:3px;font-size:.86em;color:#be123c}
+.section hr{border:none;border-top:1px solid var(--border);margin:18px 0}
+
+/* ===== TRAP DETECTION ===== */
+.trap-safe{color:var(--green);font-weight:700}
+.trap-warn{color:var(--yellow);font-weight:700}
+.trap-danger{color:var(--red);font-weight:700}
+.trap-box{border-radius:8px;padding:12px 16px;margin:10px 0;font-size:.9em}
+.trap-box.safe{background:#f0fdf4;border:1px solid #bbf7d0}
+.trap-box.warn{background:#fffbeb;border:1px solid #fde68a}
+.trap-box.danger{background:#fef2f2;border:1px solid #fecaca}
+
+/* ===== CHECKLIST ===== */
+.section li{position:relative}
+.check-item{opacity:.85}
+
+/* ===== FOOTER ===== */
+.footer{text-align:center;color:#aaa;font-size:.76em;margin-top:32px;padding:20px 0;
+  border-top:1px solid var(--border)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .container{padding:12px 8px}
+  .report-header{padding:22px 18px;border-radius:10px}
+  .report-header h1{font-size:1.1em}
+  .meta-grid{grid-template-columns:1fr}
+  .section{padding:16px 14px;border-radius:8px}
+  .section table{font-size:.8em}
+  .section th,.section td{padding:5px 8px}
+  .toc-list{gap:4px 10px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="report-header">
+<h1>🔍 券商观点追踪 | 第21周</h1>
+
+</div>
+
+<div class="toc"><div class="toc-title">目录导航</div><div class="toc-list"><a href="#sec-0">本周观点变化</a><a href="#sec-1">热门主题共识</a><a href="#sec-2">券商活跃度排行</a></div></div>
+<div class="section" id="sec-0">
+<div class="section-title">本周观点变化</div>
+<h3>🟢 上调/看多</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: left;">主题</th>
+<th style="text-align: left;">观点变化</th>
+<th style="text-align: left;">触发因素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Morgan Stanley</td>
+<td style="text-align: left;">泛林集团 (LRCX)</td>
+<td style="text-align: left;">评级上调至“增持”</td>
+<td style="text-align: left;">2027年NAND闪存绿地产能加速，WFE支出上行周期延续，公司作为核心设备供应商将深度受益。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Goldman Sachs</td>
+<td style="text-align: left;">农夫山泉 (9633.HK)</td>
+<td style="text-align: left;">维持“买入”</td>
+<td style="text-align: left;">无糖茶市场潜力巨大（预计达500-1000亿元），电解质水新品销售超预期，给予目标价56.5港元。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Goldman Sachs</td>
+<td style="text-align: left;">瑞声科技 (2018.HK)</td>
+<td style="text-align: left;">维持“买入”</td>
+<td style="text-align: left;">战略进军AI服务器液冷市场，凭借声学优势切入AI/AR眼镜核心组件，给出目标价62.5港元。</td>
+</tr>
+<tr>
+<td style="text-align: left;">UBS</td>
+<td style="text-align: left;">百度 (BIDU)</td>
+<td style="text-align: left;">维持“买入”，目标价升至180美元</td>
+<td style="text-align: left;">第一季度AI/GPU云收入分别同比暴增79%和184%，强劲的AI基础设施需求有效对冲传统广告疲软。</td>
+</tr>
+</tbody>
+</table>
+<h3>🔴 下调/看空</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: left;">主题</th>
+<th style="text-align: left;">观点变化</th>
+<th style="text-align: left;">触发因素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Morgan Stanley</td>
+<td style="text-align: left;">中国房地产基本面</td>
+<td style="text-align: left;">维持谨慎看空</td>
+<td style="text-align: left;">4月竣工与新开工面积同比大幅下滑，开发商拿地审慎，且高库存与加杠杆空间受限将致二手房销售迅速放缓。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Goldman Sachs</td>
+<td style="text-align: left;">财政与基建投资</td>
+<td style="text-align: left;">维持看空</td>
+<td style="text-align: left;">3月预算内基建支出同比锐减至-8.5%，土地出让收入持续双位数收缩，一季度GDP超预期降低了短期出台重大刺激的可能性。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Goldman Sachs</td>
+<td style="text-align: left;">阿里健康</td>
+<td style="text-align: left;">维持中性/看空利润率</td>
+<td style="text-align: left;">收入结构向处方药倾斜及对医疗AI/冷链的持续投资导致毛利率承压，预计27财年调整后净利润面临同比下降近20%的压力。</td>
+</tr>
+<tr>
+<td style="text-align: left;">BofA Securities</td>
+<td style="text-align: left;">美债市场</td>
+<td style="text-align: left;">整体看空</td>
+<td style="text-align: left;">CTA等系统性基金在曲线各期限建立极度拉伸的空头头寸，长期政府债券基金持续面临资金流出，市场向短端转移。</td>
+</tr>
+</tbody>
+</table>
+<h3>🆕 首次覆盖</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: left;">标的</th>
+<th style="text-align: center;">评级</th>
+<th style="text-align: center;">目标价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Goldman Sachs (Asia)</td>
+<td style="text-align: left;">润泽科技</td>
+<td style="text-align: center;">买入</td>
+<td style="text-align: center;">人民币 117 元</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div class="section" id="sec-1">
+<div class="section-title">热门主题共识</div>
+<h3>主题: 半导体WFE（10 份）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: center;">观点</th>
+<th style="text-align: left;">日期</th>
+<th style="text-align: left;">核心论据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Bernstein</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-05-20</td>
+<td style="text-align: left;">上调2026-2028年WFE规模预测（2026年达1480亿美元，+21.4%），看好内存扩张和晶圆级封装，首选应用材料(AMAT)、ASML等。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Morgan Stanley</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-05-18</td>
+<td style="text-align: left;">预计2026-2027年晶圆代工/逻辑芯片支出扩大，上调2026年WFE增长预测至+27%（1490亿美元），看好NAND设备支出加速。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Goldman Sachs</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-05-19</td>
+<td style="text-align: left;">看多国内半导体设备龙头中微公司，受益于国内下游强劲需求与国产替代，预计订单将持续强劲增长。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共识度</strong>: 🟢强共识<br />
+<strong>趋势</strong>: 券商一致看好全球半导体设备中长期上行周期，普遍大幅上调未来三年WFE市场规模预测，核心催化为DRAM产能扩张及先进封装需求激增。</p>
+<h3>主题: 房地产（9 份）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: center;">观点</th>
+<th style="text-align: left;">日期</th>
+<th style="text-align: left;">核心论据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Morgan Stanley</td>
+<td style="text-align: center;"><span class="trap-warn">🟡 中</span>性/看空</td>
+<td style="text-align: left;">2026-05-18</td>
+<td style="text-align: left;">行业维持中性，但对基本面看空。投资降幅扩大，尽管4月低基数下销售额跌幅收窄，但高库存和购买力受限将拖累销售反弹。</td>
+</tr>
+<tr>
+<td style="text-align: left;">J.P. Morgan</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-04-30</td>
+<td style="text-align: left;">对内房板块维持中性偏多，港股复苏动能扎实，对冲基金产生错失恐惧(FOMO)开始逢低买入滞后大盘股；深圳等地方政策放松带来短期做多窗口。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Goldman Sachs (China)</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-05-07</td>
+<td style="text-align: left;">五一假期新房和二手房销量同比大幅增长，各地密集出台宽松政策托底，当前主要开发商估值仍处于底部区间。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共识度</strong>: ⚠️分歧明显<br />
+<strong>趋势</strong>: 券商对房地产行业的短期政策刺激与销量反弹认可度较高，但对中长期基本面的可持续性存在严重分歧。 Morgan Stanley担忧高库存与资金面压力，而高盛与摩根大通更看重政策底与估值修复。</p>
+<h3>主题: AI/算力（8 份）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: center;">观点</th>
+<th style="text-align: left;">日期</th>
+<th style="text-align: left;">核心论据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Goldman Sachs</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-05-14</td>
+<td style="text-align: left;">看多中国AI基础设施，预测2025-28年数据中心需求CAGR达20%。AI推理需求强劲，GPUaaS新模式展现出极具吸引力的经济效益。</td>
+</tr>
+<tr>
+<td style="text-align: left;">UBS</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-05-19</td>
+<td style="text-align: left;">看多百度AI云，一季度GPU云收入同比增长184%，高利润率的GPU云业务占比上升将结构性提振整体利润率。</td>
+</tr>
+<tr>
+<td style="text-align: left;">BofA Securities</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-04-29</td>
+<td style="text-align: left;">看多AI基础设施投资前景，预测2026年超大规模资本支出将超8000亿美元，并持续利好算力半导体及光学器件等五大领域。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共识度</strong>: 🟢强共识<br />
+<strong>趋势</strong>: 机构高度一致地看多AI基础设施产业链上下游。算力硬件、液冷配套、数据中心及GPU云服务等均被密集提及，算力需求高景气度成为跨市场共识。</p>
+<h3>主题: 中国股市（6 份）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: center;">观点</th>
+<th style="text-align: left;">日期</th>
+<th style="text-align: left;">核心论据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Morgan Stanley</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-05-17</td>
+<td style="text-align: left;">整体中性，但强烈看多A股。A股集中度高且“国家队”资金充裕，建议超配上游材料、工业、能源及半导体板块以顺应AI超级周期。</td>
+</tr>
+<tr>
+<td style="text-align: left;">J.P. Morgan</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-04-30</td>
+<td style="text-align: left;">看多中国权益市场，流动性复苏与宏观企稳将支撑估值。AI基础设施与能源安全成为资本高度集中的核心主题。</td>
+</tr>
+<tr>
+<td style="text-align: left;">UBS</td>
+<td style="text-align: center;">🟢看多</td>
+<td style="text-align: left;">2026-04-24</td>
+<td style="text-align: left;">宏观微观基本面改善，短期内A股和H股有上行潜力。HSTECH估值回归且受益于反垄断等利好，可能迎来反弹。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共识度</strong>: 🟢强共识<br />
+<strong>趋势</strong>: 头部券商普遍对中国股市（特别是A股市场）的结构性机会持乐观态度。资金明显向硬科技、高端制造及AI相关产业链集中，“中特估”与“科特估”成为重要压舱石。</p>
+<hr />
+</div>
+<div class="section" id="sec-2">
+<div class="section-title">券商活跃度排行</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">排名</th>
+<th style="text-align: left;">机构</th>
+<th style="text-align: center;">研报数</th>
+<th style="text-align: center;">看多占比</th>
+<th style="text-align: center;">覆盖主题数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Goldman Sachs (含Asia/China)</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">61.1%</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Morgan Stanley</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">57.1%</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">Bernstein</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">66.7%</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">J.P. Morgan</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">80.0%</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">UBS</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">100.0%</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">BofA Securities</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">33.3%</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: left;">Citigroup</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.0%</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;">Jefferies</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">100.0%</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p>📌 数据来源: reports.db</p>
+<p>⚠️ 以上为AI聚合分析，仅供参考</p>
+</blockquote>
+</div>
+
+<div class="footer">本报告由 zsxq-analyzer 自动生成 · 仅供参考 · 不构成投资建议</div>
+</div>
+</body>
+</html>
