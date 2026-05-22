@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🎯 主题投资 | 人形机器人 - 研报深度解读</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f5f6f8;--card:#fff;--text:#1a1a2e;--text2:#666;--accent:#1d4ed8;
+  --green:#16a34a;--yellow:#d97706;--red:#dc2626;--border:#e5e7eb;--tag-bg:#eff6ff;
+  --header-grad:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#2563eb 100%)}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Noto Sans SC","PingFang SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased}
+.container{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+
+/* ===== HEADER ===== */
+.report-header{background:var(--header-grad);color:#fff;border-radius:14px;
+  padding:32px 28px 24px;margin-bottom:24px;position:relative;overflow:hidden}
+.report-header::after{content:'';position:absolute;top:-40%;right:-10%;width:260px;height:260px;
+  background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);pointer-events:none}
+.report-header h1{font-size:1.35em;font-weight:700;line-height:1.5;margin-bottom:16px;position:relative}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:4px 20px;font-size:.84em;opacity:.9;position:relative}
+.meta-item{display:flex;gap:6px;padding:2px 0}
+.meta-label{opacity:.65;white-space:nowrap;min-width:48px}
+
+/* ===== CONCLUSION BOX ===== */
+.conclusion-box{background:var(--card);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:20px 22px;margin-bottom:24px;font-size:.94em;line-height:1.85;
+  box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.conclusion-box .tag{display:inline-block;background:var(--tag-bg);color:var(--accent);
+  font-size:.72em;font-weight:600;padding:2px 10px;border-radius:4px;margin-bottom:10px;
+  letter-spacing:.3px}
+
+/* ===== TOC ===== */
+.toc{background:var(--card);border-radius:10px;padding:14px 20px;margin-bottom:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border)}
+.toc-title{font-size:.72em;font-weight:700;color:var(--text2);text-transform:uppercase;
+  letter-spacing:.8px;margin-bottom:10px}
+.toc-list{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none}
+.toc-list a{font-size:.82em;color:var(--accent);text-decoration:none;padding:2px 0;
+  display:inline-flex;align-items:center;gap:4px}
+.toc-list a:hover{text-decoration:underline}
+
+/* ===== SECTIONS ===== */
+.section{background:var(--card);border-radius:10px;padding:24px 26px;margin-bottom:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border);
+  transition:box-shadow .15s}
+.section:hover{box-shadow:0 3px 12px rgba(0,0,0,.07)}
+.section-title{font-size:1.08em;font-weight:700;margin-bottom:16px;padding-bottom:10px;
+  border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;color:#0f172a}
+.section-title .icon{font-size:1.15em}
+
+/* ===== TABLES ===== */
+.section table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86em;
+  border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.section th{background:#f8fafc;font-weight:600;text-align:left;padding:8px 12px;
+  border-bottom:2px solid var(--border);font-size:.92em;white-space:nowrap}
+.section td{padding:7px 12px;border-bottom:1px solid #f1f5f9;vertical-align:top;line-height:1.6}
+.section tr:last-child td{border-bottom:none}
+.section tr:hover td{background:#fafbfc}
+
+/* ===== TYPOGRAPHY ===== */
+.section h3{font-size:.98em;font-weight:700;margin:18px 0 8px;color:#1e3a5f}
+.section h4{font-size:.92em;font-weight:600;margin:14px 0 6px;color:#334155}
+.section p{margin:8px 0}
+.section strong{color:#1e3a5f;font-weight:600}
+.section ul,.section ol{margin:6px 0 6px 20px}
+.section li{margin:3px 0;line-height:1.7}
+.section blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:12px 0;
+  background:#f8faff;border-radius:0 6px 6px 0;color:var(--text2);font-size:.92em}
+.section code{background:#f1f5f9;padding:1px 6px;border-radius:3px;font-size:.86em;color:#be123c}
+.section hr{border:none;border-top:1px solid var(--border);margin:18px 0}
+
+/* ===== TRAP DETECTION ===== */
+.trap-safe{color:var(--green);font-weight:700}
+.trap-warn{color:var(--yellow);font-weight:700}
+.trap-danger{color:var(--red);font-weight:700}
+.trap-box{border-radius:8px;padding:12px 16px;margin:10px 0;font-size:.9em}
+.trap-box.safe{background:#f0fdf4;border:1px solid #bbf7d0}
+.trap-box.warn{background:#fffbeb;border:1px solid #fde68a}
+.trap-box.danger{background:#fef2f2;border:1px solid #fecaca}
+
+/* ===== CHECKLIST ===== */
+.section li{position:relative}
+.check-item{opacity:.85}
+
+/* ===== FOOTER ===== */
+.footer{text-align:center;color:#aaa;font-size:.76em;margin-top:32px;padding:20px 0;
+  border-top:1px solid var(--border)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .container{padding:12px 8px}
+  .report-header{padding:22px 18px;border-radius:10px}
+  .report-header h1{font-size:1.1em}
+  .meta-grid{grid-template-columns:1fr}
+  .section{padding:16px 14px;border-radius:8px}
+  .section table{font-size:.8em}
+  .section th,.section td{padding:5px 8px}
+  .toc-list{gap:4px 10px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="report-header">
+<h1>🎯 主题投资 | 人形机器人</h1>
+
+</div>
+
+<div class="toc"><div class="toc-title">目录导航</div><div class="toc-list"><a href="#sec-0">主题概述</a><a href="#sec-1">核心问题</a><a href="#sec-2">产业链地图</a><a href="#sec-3">投资标的</a><a href="#sec-4">关键验证指标</a><a href="#sec-5">风险提示</a></div></div>
+<div class="section" id="sec-0">
+<div class="section-title">主题概述</div>
+<blockquote>
+<p>人形机器人及实体AI（Physical AI）产业正迎来从“研发成本中心”向“规模化运营资产”的历史性拐点。随着特斯拉、Figure AI等头部企业量产工厂的落地，以及执行器标准化带来的BOM成本大幅下探，全球商业化竞速正式开启。在此背景下，核心零部件国产替代、半导体计算需求爆发以及RaaS（机器人即服务）新商业模式将孕育巨大的主题投资机遇。</p>
+</blockquote>
+</div>
+<div class="section" id="sec-1">
+<div class="section-title">核心问题</div>
+<p><strong>人形机器人跨越量产鸿沟后，哪些细分赛道与商业模式能率先兑现盈利预期？</strong></p>
+<h3>看多方 (6/7)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: left;">核心论据</th>
+<th style="text-align: left;">关键数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Nomura</td>
+<td style="text-align: left;">行业进入“赢者通吃”商业化竞速，重载工业与物流场景率先落地，RaaS模式及标准化执行器大幅降本。</td>
+<td style="text-align: left;">Figure AI年化产能超1.2万台，单台边际成本降至2万美元；BD电动Atlas举重超45公斤。</td>
+</tr>
+<tr>
+<td style="text-align: left;">万联证券</td>
+<td style="text-align: left;">整机价格下探带动规模化量产破晓，短期资金热度提升，核心部件国产供应链迎来放量突破。</td>
+<td style="text-align: left;">特斯拉首座机器人工厂年产能设计100万台；宇树科技起售价低至2.69万元。</td>
+</tr>
+<tr>
+<td style="text-align: left;">UBS</td>
+<td style="text-align: left;">核心业务基本面强劲带动可持续盈利增长，中长期结构性改革与销售扩张提升盈利能见度。</td>
+<td style="text-align: left;">上调川崎重工目标价至4380日元，预计其29/3财年营业利润达2718亿日元。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bernstein</td>
+<td style="text-align: left;">核心激光雷达业务市占率稳固，“物理人工智能”战略性新业务有望成为未来股价上行驱动力。</td>
+<td style="text-align: left;">ADAS与机器人激光雷达出货量同比大增142%和138%，稳居中国51%市占率。</td>
+</tr>
+<tr>
+<td style="text-align: left;">BofA Securities</td>
+<td style="text-align: left;">AI及计算相关半导体细分领域加速复苏，需求放大驱动营收与盈利显著反弹。</td>
+<td style="text-align: left;">1Q26板块营收同比增长平均扩大至约30%；首选Montage等算力芯片标的。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Goldman Sachs</td>
+<td style="text-align: left;">中国手术机器人凭借“设备+耗材/服务”的差异化商业模式成功出海，渗透率提升逻辑确立。</td>
+<td style="text-align: left;">MedBot已在约60个国家累计获得约170个海外订单。</td>
+</tr>
+</tbody>
+</table>
+<h3>质疑方 (1/7)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: left;">核心担忧</th>
+<th style="text-align: left;">关键数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">临时看空方 (源自GS及Bernstein观点)</td>
+<td style="text-align: left;">1. 短期估值存在溢价压力；2. 市场对创新物理AI产品的必要性与价值缺乏清晰认知；3. 传统功率半导体价格依然承压。</td>
+<td style="text-align: left;">MedBot远期市销率(P/S)高达约20倍；传统半导体部分标的（如Goodix）利润率波动及目标价遭下调。</td>
+</tr>
+</tbody>
+</table>
+<p><em>(注：市场整体呈现多方压倒性优势，质疑主要体现在短期估值与市场认知的阶段性错位)</em></p>
+</div>
+<div class="section" id="sec-2">
+<div class="section-title">产业链地图</div>
+<p>上游: [核心零部件/半导体 (Montage/聚辰股份, 禾赛科技, 川崎重工业)] → 中游: [整机制造与代工 (Boston Dynamics, Figure AI, 特斯拉, 宇树科技, MedBot)] → 下游: [场景应用与服务 (宝马等汽车工厂, 物流履行中心, 医疗手术机构)]</p>
+</div>
+<div class="section" id="sec-3">
+<div class="section-title">投资标的</div>
+<h3>确定性排序</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">优先级</th>
+<th style="text-align: left;">标的</th>
+<th style="text-align: left;">代码</th>
+<th style="text-align: left;">受益环节</th>
+<th style="text-align: center;">确定性</th>
+<th style="text-align: center;">弹性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">禾赛科技</td>
+<td style="text-align: left;">HSAI</td>
+<td style="text-align: left;">机器人激光雷达/上游感知</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">高</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Figure AI (未上市) / 特斯拉</td>
+<td style="text-align: left;">TSLA</td>
+<td style="text-align: left;">中游整机量产/数据飞轮</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">极高</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">川崎重工业</td>
+<td style="text-align: left;">7012.T</td>
+<td style="text-align: left;">核心执行器与重载机制造</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">中</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Montage (澜起科技)</td>
+<td style="text-align: left;">688008.CH</td>
+<td style="text-align: left;">AI算力芯片/DDR5/上游半导体</td>
+<td style="text-align: center;">高</td>
+<td style="text-align: center;">中</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">MedBot (微创机器人)</td>
+<td style="text-align: left;">2252.HK</td>
+<td style="text-align: left;">手术机器人/医疗垂直落地</td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">高</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">宇树科技 (未上市)</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">高性价比整机/商业化示范</td>
+<td style="text-align: center;">中</td>
+<td style="text-align: center;">极高</td>
+</tr>
+</tbody>
+</table>
+<h3>A股映射</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">标的</th>
+<th style="text-align: left;">代码</th>
+<th style="text-align: left;">受益逻辑</th>
+<th style="text-align: left;">阶段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">澜起科技</td>
+<td style="text-align: left;">688008.CH</td>
+<td style="text-align: left;">受益于全球AI算力爆发及DDR5升级周期，为人形机器人底层算力提供核心支撑。</td>
+<td style="text-align: left;">爆发放量期</td>
+</tr>
+<tr>
+<td style="text-align: left;">禾赛科技</td>
+<td style="text-align: left;">HSAI</td>
+<td style="text-align: left;">ADAS与机器人激光雷达出货量同比翻倍，物理AI战略打开长期成长空间。</td>
+<td style="text-align: left;">业绩兑现期</td>
+</tr>
+<tr>
+<td style="text-align: left;">微创机器人-B</td>
+<td style="text-align: left;">2252.HK</td>
+<td style="text-align: left;">结构性出海龙头，凭借“设备+耗材”模式在60个国家获取170个订单，突破短期估值枷锁。</td>
+<td style="text-align: left;">商业化扩张期</td>
+</tr>
+<tr>
+<td style="text-align: left;">兆易创新</td>
+<td style="text-align: left;">603986.CH</td>
+<td style="text-align: left;">作为本土存储及计算芯片龙头，受益于AIoT及边缘计算需求回暖。</td>
+<td style="text-align: left;">业绩复苏期</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sec-4">
+<div class="section-title">关键验证指标</div>
+<ol>
+<li><strong>特斯拉“超级工厂”产能爬坡进度</strong> — [2026年Q3~Q4验证]</li>
+<li><strong>Figure AI等头部企业在物流/工业场景的RaaS服务续约率与毛利率</strong> — [2026年年底验证]</li>
+<li><strong>国产核心零部件（激光雷达、执行器）在中低端人形机器人中的渗透率与装机量</strong> — [2026年Q3验证]</li>
+</ol>
+</div>
+<div class="section" id="sec-5">
+<div class="section-title">风险提示</div>
+<ul>
+<li>人形机器人大规模量产后的良品率不及预期，导致降本逻辑受阻。</li>
+<li>宏观经济波动导致B端工业客户缩减自动化与资本开支预算。</li>
+<li>AI底层大模型及端侧算力发展遇到瓶颈，限制机器人的泛化与自主决策能力。</li>
+<li>核心零部件（如高端芯片、精密执行器）遭遇地缘政治及供应链进出口限制。</li>
+</ul>
+<hr />
+<blockquote>
+<p>📌 本专题聚合 7 份研报 (万联证券, BofA Securities (BofA Global Research), UBS, Bernstein, Goldman Sachs, Nomura)</p>
+<p>⚠️ 以上为AI聚合分析，仅供参考，不构成投资建议</p>
+</blockquote>
+</div>
+
+<div class="footer">本报告由 zsxq-analyzer 自动生成 · 仅供参考 · 不构成投资建议</div>
+</div>
+</body>
+</html>
