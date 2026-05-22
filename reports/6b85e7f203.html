@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🏢 公司深度 | 应用材料 AMAT - 研报深度解读</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f5f6f8;--card:#fff;--text:#1a1a2e;--text2:#666;--accent:#1d4ed8;
+  --green:#16a34a;--yellow:#d97706;--red:#dc2626;--border:#e5e7eb;--tag-bg:#eff6ff;
+  --header-grad:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#2563eb 100%)}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Noto Sans SC","PingFang SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased}
+.container{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+
+/* ===== HEADER ===== */
+.report-header{background:var(--header-grad);color:#fff;border-radius:14px;
+  padding:32px 28px 24px;margin-bottom:24px;position:relative;overflow:hidden}
+.report-header::after{content:'';position:absolute;top:-40%;right:-10%;width:260px;height:260px;
+  background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);pointer-events:none}
+.report-header h1{font-size:1.35em;font-weight:700;line-height:1.5;margin-bottom:16px;position:relative}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:4px 20px;font-size:.84em;opacity:.9;position:relative}
+.meta-item{display:flex;gap:6px;padding:2px 0}
+.meta-label{opacity:.65;white-space:nowrap;min-width:48px}
+
+/* ===== CONCLUSION BOX ===== */
+.conclusion-box{background:var(--card);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+  padding:20px 22px;margin-bottom:24px;font-size:.94em;line-height:1.85;
+  box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.conclusion-box .tag{display:inline-block;background:var(--tag-bg);color:var(--accent);
+  font-size:.72em;font-weight:600;padding:2px 10px;border-radius:4px;margin-bottom:10px;
+  letter-spacing:.3px}
+
+/* ===== TOC ===== */
+.toc{background:var(--card);border-radius:10px;padding:14px 20px;margin-bottom:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border)}
+.toc-title{font-size:.72em;font-weight:700;color:var(--text2);text-transform:uppercase;
+  letter-spacing:.8px;margin-bottom:10px}
+.toc-list{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none}
+.toc-list a{font-size:.82em;color:var(--accent);text-decoration:none;padding:2px 0;
+  display:inline-flex;align-items:center;gap:4px}
+.toc-list a:hover{text-decoration:underline}
+
+/* ===== SECTIONS ===== */
+.section{background:var(--card);border-radius:10px;padding:24px 26px;margin-bottom:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid var(--border);
+  transition:box-shadow .15s}
+.section:hover{box-shadow:0 3px 12px rgba(0,0,0,.07)}
+.section-title{font-size:1.08em;font-weight:700;margin-bottom:16px;padding-bottom:10px;
+  border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;color:#0f172a}
+.section-title .icon{font-size:1.15em}
+
+/* ===== TABLES ===== */
+.section table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86em;
+  border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+.section th{background:#f8fafc;font-weight:600;text-align:left;padding:8px 12px;
+  border-bottom:2px solid var(--border);font-size:.92em;white-space:nowrap}
+.section td{padding:7px 12px;border-bottom:1px solid #f1f5f9;vertical-align:top;line-height:1.6}
+.section tr:last-child td{border-bottom:none}
+.section tr:hover td{background:#fafbfc}
+
+/* ===== TYPOGRAPHY ===== */
+.section h3{font-size:.98em;font-weight:700;margin:18px 0 8px;color:#1e3a5f}
+.section h4{font-size:.92em;font-weight:600;margin:14px 0 6px;color:#334155}
+.section p{margin:8px 0}
+.section strong{color:#1e3a5f;font-weight:600}
+.section ul,.section ol{margin:6px 0 6px 20px}
+.section li{margin:3px 0;line-height:1.7}
+.section blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:12px 0;
+  background:#f8faff;border-radius:0 6px 6px 0;color:var(--text2);font-size:.92em}
+.section code{background:#f1f5f9;padding:1px 6px;border-radius:3px;font-size:.86em;color:#be123c}
+.section hr{border:none;border-top:1px solid var(--border);margin:18px 0}
+
+/* ===== TRAP DETECTION ===== */
+.trap-safe{color:var(--green);font-weight:700}
+.trap-warn{color:var(--yellow);font-weight:700}
+.trap-danger{color:var(--red);font-weight:700}
+.trap-box{border-radius:8px;padding:12px 16px;margin:10px 0;font-size:.9em}
+.trap-box.safe{background:#f0fdf4;border:1px solid #bbf7d0}
+.trap-box.warn{background:#fffbeb;border:1px solid #fde68a}
+.trap-box.danger{background:#fef2f2;border:1px solid #fecaca}
+
+/* ===== CHECKLIST ===== */
+.section li{position:relative}
+.check-item{opacity:.85}
+
+/* ===== FOOTER ===== */
+.footer{text-align:center;color:#aaa;font-size:.76em;margin-top:32px;padding:20px 0;
+  border-top:1px solid var(--border)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .container{padding:12px 8px}
+  .report-header{padding:22px 18px;border-radius:10px}
+  .report-header h1{font-size:1.1em}
+  .meta-grid{grid-template-columns:1fr}
+  .section{padding:16px 14px;border-radius:8px}
+  .section table{font-size:.8em}
+  .section th,.section td{padding:5px 8px}
+  .toc-list{gap:4px 10px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="report-header">
+<h1>🏢 公司深度 | 应用材料 AMAT</h1>
+
+</div>
+
+<div class="toc"><div class="toc-title">目录导航</div><div class="toc-list"><a href="#sec-0">覆盖概览</a><a href="#sec-1">共识与分歧</a><a href="#sec-2">估值参考</a><a href="#sec-3">关键催化剂</a><a href="#sec-4">风险提示</a><a href="#sec-5">A股/港股映射（如适用）</a></div></div>
+<div class="section" id="sec-0">
+<div class="section-title">覆盖概览</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">机构</th>
+<th style="text-align: center;">评级</th>
+<th style="text-align: center;">目标价</th>
+<th style="text-align: left;">核心逻辑</th>
+<th style="text-align: left;">日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Bernstein</td>
+<td style="text-align: center;">看多/首选股</td>
+<td style="text-align: center;">525美元</td>
+<td style="text-align: left;">先进逻辑与高端封装驱动增长，稳固行业领先地位</td>
+<td style="text-align: left;">2026-05-20</td>
+</tr>
+<tr>
+<td style="text-align: left;">Morgan Stanley</td>
+<td style="text-align: center;">持平大盘</td>
+<td style="text-align: center;">未明确</td>
+<td style="text-align: left;">投资重心向NAND轮动，DRAM受限致评级下调</td>
+<td style="text-align: left;">2026-05-18</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sec-1">
+<div class="section-title">共识与分歧</div>
+<p><strong>共识</strong>: 券商一致看好2026-2028年全球晶圆制造设备(WFE)市场的长期上行周期，并高度认同先进/前端封装技术（如晶圆级封装）将成为推动设备商收入增长的重要增量引擎。此外，双方均看好中国半导体设备本土替代的加速进程。</p>
+<p><strong>分歧</strong>: 核心分歧在于终端市场的偏好与个股受益程度。Bernstein更看重应用材料在先进逻辑、DRAM和高端封装领域的综合优势，将其作为首选；而Morgan Stanley则认为中期DRAM产能受限，市场投资重心将加速向NAND轮动（预计NAND将成为最快增长的终端市场），因此更倾向于将NAND设备核心受益者泛林集团（LRCX）作为首选，并因此下调了应用材料的评级。</p>
+</div>
+<div class="section" id="sec-2">
+<div class="section-title">估值参考</div>
+<ul>
+<li><strong>行业规模预测 (Bernstein)</strong>：预计2026至2028年全球WFE规模将分别达到1480亿美元（+21.4%）、1750亿美元（+18.2%）和1980亿美元（+13%）。</li>
+<li><strong>行业规模预测 (Morgan Stanley)</strong>：预计2026至2028年全球WFE规模将分别达到1490亿美元（+27%）、1910亿美元（+28%）和2153亿美元（+13%）。</li>
+<li><strong>细分赛道增速预期</strong>：前端先进封装设备预计年增50%；NAND WFE在2027年预计实现52%的高速增长。</li>
+<li><em>(注：研报未提供应用材料具体的PE、PS等个股财务估值倍数数据)</em></li>
+</ul>
+</div>
+<div class="section" id="sec-3">
+<div class="section-title">关键催化剂</div>
+<ol>
+<li><strong>先进封装技术渗透率提升</strong> — 预计前端封装将占据50%的封装市场份额，为应用材料等综合设备龙头带来显著营收增量。</li>
+<li><strong>DRAM与先进逻辑产能扩张</strong> — 尽管存在产能受限争议，但超高无限制位需求（40%以上）仍将支撑相关设备的强劲资本开支。</li>
+<li><strong>NAND绿地项目加速落地</strong> — 若应用材料能在高速增长的NAND市场中获取更多份额，将构成显著超预期催化剂。</li>
+</ol>
+</div>
+<div class="section" id="sec-4">
+<div class="section-title">风险提示</div>
+<ul>
+<li><strong>终端市场投资轮动风险</strong>：若资本开支从DRAM/逻辑芯片大规模转向NAND，应用材料可能面临订单份额被分流的风险。</li>
+<li><strong>行业竞争加剧</strong>：在先进封装和核心前道工艺中，面临来自泛林集团（LRCX）及其他细分龙头的激烈份额竞争。</li>
+<li><strong>全球半导体周期波动</strong>：宏观经济不确定性可能导致下游晶圆厂延迟资本开支计划，进而影响整体WFE规模预期。</li>
+</ul>
+</div>
+<div class="section" id="sec-5">
+<div class="section-title">A股/港股映射（如适用）</div>
+<ul>
+<li><strong>中微公司 (688012.SH)</strong>：国内刻蚀设备龙头，直接受益于国内DRAM/NAND及先进逻辑产能扩张与本土替代进程。</li>
+<li><strong>北方华创 (002371.SZ)</strong>：国内半导体设备平台型龙头，覆盖刻蚀、薄膜沉积等多品类，对标应用材料的部分业务线。</li>
+<li><strong>拓荆科技 (688072.SH)</strong>：国内薄膜沉积设备核心厂商，受益于国内晶圆厂大规模招标。</li>
+</ul>
+<hr />
+<blockquote>
+<p>📌 数据来源: Bernstein, Morgan Stanley &amp; Co. LLC</p>
+<p>⚠️ 以上为AI聚合分析，仅供参考，不构成投资建议</p>
+</blockquote>
+</div>
+
+<div class="footer">本报告由 zsxq-analyzer 自动生成 · 仅供参考 · 不构成投资建议</div>
+</div>
+</body>
+</html>
